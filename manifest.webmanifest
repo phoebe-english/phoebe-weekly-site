@@ -1,0 +1,23 @@
+{
+ "name": "菲比小週報",
+ "short_name": "小週報",
+ "start_url": "/",
+ "scope": "/",
+ "display": "fullscreen",
+ "background_color": "#FFF9EF",
+ "theme_color": "#FFF9EF",
+ "lang": "zh-Hant",
+ "icons": [
+  {
+   "src": "/img/icon192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/img/icon512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  }
+ ]
+}

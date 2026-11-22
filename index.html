@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>菲比小週報</title>
+<meta name="description" content="每週六出刊的兒童雙語科普週報。每週三則世界新聞，每則都寫成三種難度，中英文都有。免費閱讀，不用註冊。台南菲比英文出品。">
+<meta property="og:title" content="菲比小週報">
+<meta property="og:description" content="每週六出刊。每週三則世界新聞，三種難度，中英文都有。免費，不用註冊。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/img/cover-2026-11-21.jpg">
+<meta name="robots" content="index,follow">
+<style>
+/* 菲比通用手感（phoebe-web-feel） */
+:where(a, button, input, select, textarea, label, summary, [role='button']) {
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+:where(button, summary, [role='button']) {
+  transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 120ms; transition-timing-function: ease-out;
+}
+:where(button:not(:disabled), summary, [role='button']:not([aria-disabled='true'])):active {
+  transform: scale(0.97); transition-duration: 60ms;
+}
+:where(a, button, input, select, textarea, summary, [role='button']):focus-visible {
+  outline: 2px solid currentColor; outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:.01ms !important; animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-property:opacity,color,background-color,border-color !important;
+    transition-duration:150ms !important;
+  }
+  :where(button, summary, [role='button']):active { transform:none !important; }
+}
+
+:root{
+  --paper:#FBF7EF; --surface:#FFFFFF; --ink:#12263D; --ink2:#5A7089;
+  --line:#E6DFD1; --brand:#1B4F86; --brand-dark:#143A66; --accent:#FFD86B;
+  --accent-ink:#7A5A05; --pink:#F7B8C4; --sand:#DDCCB8;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+a{color:var(--brand)}
+.wrap{max-width:980px; margin:0 auto; padding-inline:22px}
+
+/* 頂列 */
+.topbar{display:flex; align-items:center; justify-content:space-between; padding-block:22px 6px; gap:16px}
+.topbar img{height:34px; width:auto}
+.topbar a.ig{
+  display:inline-flex; align-items:center; min-height:44px; padding:0 16px;
+  border:1.5px solid var(--line); border-radius:999px;
+  font-size:15px; font-weight:700; text-decoration:none; color:var(--brand); white-space:nowrap;
+}
+.topbar a.ig:hover{border-color:var(--brand)}
+
+/* Hero */
+.hero{padding-block:34px 0; text-align:center}
+.hero .kicker{
+  display:inline-block; background:var(--accent); color:var(--accent-ink);
+  font-size:13px; font-weight:800; letter-spacing:.12em;
+  padding:6px 16px; border-radius:999px; margin:0 0 20px;
+}
+.hero h1{
+  font-size:clamp(36px,9vw,56px); line-height:1.12; letter-spacing:-0.035em;
+  margin:0 0 18px; color:var(--brand-dark); font-weight:800;
+}
+.hero h1 em{
+  font-style:normal; color:var(--brand-dark); white-space:nowrap;
+  background:linear-gradient(to top, var(--accent) 0, var(--accent) .26em, transparent .26em);
+  padding-inline:.04em;
+}
+.hero .lead{
+  font-size:clamp(17px,4.4vw,21px); color:var(--ink2); line-height:1.65;
+  margin:0 auto 28px; max-width:23em;
+}
+.cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:16px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:54px; padding:0 30px; border-radius:14px; border:0; cursor:pointer;
+  background:var(--brand); color:#fff; font-size:18px; font-weight:800;
+  text-decoration:none; font-family:inherit; letter-spacing:.01em;
+}
+.btn:hover{background:var(--brand-dark)}
+.btn.ghost{background:var(--surface); color:var(--brand); border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--brand)}
+.runline{font-size:15px; color:var(--ink2); margin:0 0 6px}
+.runline b{color:var(--brand-dark)}
+
+/* 區塊標題 */
+.sec-h{
+  font-size:clamp(26px,6.4vw,34px); line-height:1.25; letter-spacing:-0.025em;
+  margin:0 0 6px; color:var(--brand-dark); font-weight:800;
+}
+.sec-p{font-size:17px; color:var(--ink2); margin:0 0 22px; max-width:30em}
+section{margin-top:64px}
+
+/* 本期 */
+.issue{
+  background:var(--surface); border:1px solid var(--line); border-radius:24px;
+  overflow:hidden; display:grid; grid-template-columns:1fr; gap:0;
+}
+.issue .pic{background:var(--sand)}
+.issue .pic img{width:100%; height:auto; display:block}
+.issue .body{padding:26px 24px 26px}
+.issue .flag{
+  display:inline-block; background:var(--accent); color:var(--accent-ink);
+  font-size:13px; font-weight:800; letter-spacing:.06em;
+  padding:4px 13px; border-radius:999px; margin-bottom:12px;
+}
+.issue h3{font-size:23px; line-height:1.3; margin:0 0 2px; letter-spacing:-0.02em}
+.issue .date{font-size:15px; color:var(--ink2); margin:0 0 20px}
+ul.stories{list-style:none; margin:0 0 24px; padding:0; display:flex; flex-direction:column; gap:16px}
+ul.stories li{display:flex; gap:12px; align-items:flex-start}
+ul.stories .tag{
+  flex:none; font-size:12px; font-weight:800; letter-spacing:.04em;
+  background:#EAF1F8; color:var(--brand); padding:4px 10px; border-radius:7px; margin-top:4px;
+}
+ul.stories .t{font-size:17px; line-height:1.5; font-weight:600}
+@media (min-width:720px){
+  .issue{grid-template-columns:minmax(0,400px) 1fr; align-items:stretch}
+  .issue .pic{align-self:start}
+  .issue .pic img{height:auto; object-fit:contain}
+  .issue .body{padding:30px 32px}
+}
+
+/* 試讀 */
+.taste{
+  background:var(--surface); border:1px solid var(--line); border-radius:24px;
+  padding:26px 24px 24px;
+}
+.levels{display:flex; gap:9px; margin:0 0 20px; flex-wrap:wrap}
+.levels button{
+  min-height:46px; padding:0 22px; border-radius:999px; cursor:pointer;
+  border:1.5px solid var(--line); background:transparent; color:var(--ink2);
+  font-size:16px; font-weight:800; font-family:inherit;
+}
+.levels button[aria-pressed=true]{background:var(--brand); border-color:var(--brand); color:#fff}
+.taste-body{font-size:18px; line-height:1.85; margin:0; min-height:5.6em}
+.taste .note{
+  margin:20px 0 0; padding-top:18px; border-top:1px solid var(--line);
+  font-size:15px; color:var(--ink2);
+}
+@media (max-width:520px){ .taste-body{min-height:10em} }
+
+/* 四格 */
+.what{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+.what div{
+  background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px 18px;
+}
+.what .n{
+  display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px;
+  border-radius:9px; background:var(--accent); color:var(--accent-ink);
+  font-size:15px; font-weight:800; margin-bottom:10px;
+}
+.what b{display:block; font-size:18px; margin-bottom:3px; letter-spacing:-0.01em}
+.what span{color:var(--ink2); font-size:15px; line-height:1.55; display:block}
+@media (max-width:560px){ .what{grid-template-columns:1fr} }
+
+/* 往期 */
+ol.issues{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+ol.issues li{border-bottom:1px solid var(--line)}
+ol.issues a{
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+  padding:20px 4px; text-decoration:none; color:var(--ink); min-height:48px;
+}
+ol.issues a:hover .h{color:var(--brand)}
+ol.issues .n{flex:none; font-weight:800; font-size:15px; color:var(--ink2); width:4.6em}
+ol.issues .h{flex:1 1 14em; font-size:17px; line-height:1.5; font-weight:600}
+ol.issues .d{flex:none; font-size:14px; color:var(--ink2)}
+
+/* 訂閱 */
+section.sub{background:var(--brand-dark); color:#fff; border-radius:24px; padding:34px 28px 30px}
+section.sub h2{
+  margin:0 0 10px; font-size:clamp(24px,6vw,32px); line-height:1.3;
+  letter-spacing:-0.025em; color:#fff; font-weight:800;
+}
+section.sub p.lead{margin:0 0 24px; font-size:17px; color:#C9DCF0; max-width:26em}
+form.sub-form{display:flex; gap:10px; flex-wrap:wrap; align-items:stretch}
+form.sub-form label.vis{flex:1 1 16em; display:flex; flex-direction:column; gap:7px; font-size:14px; color:#C9DCF0}
+form.sub-form input[type=email]{
+  width:100%; min-height:54px; border-radius:12px; border:1.5px solid #3C6699;
+  background:#0F2C4F; color:#fff; padding:0 16px; font-size:17px; font-family:inherit;
+}
+form.sub-form input[type=email]::placeholder{color:#7C9BBD}
+form.sub-form input[type=email]:focus{border-color:var(--accent); outline:none}
+form.sub-form button{
+  flex:none; align-self:flex-end; min-height:54px; padding:0 30px; border:0; border-radius:12px;
+  background:var(--accent); color:var(--accent-ink); font-size:17px; font-weight:800;
+  font-family:inherit; cursor:pointer;
+}
+form.sub-form button:hover{background:#FFE08C}
+section.sub .fine{margin:16px 0 0; font-size:14px; color:#9FBBD8}
+
+section.sub .sub-count{margin:0 0 18px;font-size:16px;color:#D7E6F5}
+section.sub .sub-count b{color:var(--accent);font-size:20px;font-weight:800;margin:0 2px}
+form.sub-form[hidden]{display:none}
+section.sub .sub-ok{margin:0;padding:16px 18px;border-radius:12px;background:#0F2C4F;border:1.5px solid var(--accent);color:#fff;font-size:17px;line-height:1.6}
+@media (max-width:520px){ form.sub-form button{width:100%; align-self:stretch} }
+
+/* 分享 */
+.share{background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:26px 24px 24px}
+.share p{margin:0 0 20px; font-size:17px; max-width:30em}
+.share-row{display:flex; gap:10px; flex-wrap:wrap}
+.share-row a,.share-row button{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:50px; padding:0 22px; border-radius:12px; cursor:pointer;
+  font-size:16px; font-weight:700; font-family:inherit; text-decoration:none;
+  border:1.5px solid var(--line); background:transparent; color:var(--brand);
+}
+.share-row a:hover,.share-row button:hover{border-color:var(--brand)}
+
+footer{
+  margin-top:72px; padding:28px 0 72px; border-top:1px solid var(--line);
+  color:var(--ink2); font-size:15px;
+}
+footer p{margin:0 0 6px}
+footer img{height:28px; width:auto; opacity:.75; margin-bottom:14px}
+/* PW_DESK 電腦版：兩欄、放寬、封面完整顯示 */
+@media (min-width:960px){
+  .wrap{max-width:1180px; padding-inline:40px}
+  .top{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,480px); gap:56px; align-items:start; padding-top:12px}
+  .top section{margin-top:0}
+  .hero{text-align:left; padding-block:56px 0}
+  .hero h1{font-size:60px}
+  .hero .lead{margin:0 0 28px; max-width:26em}
+  .cta{justify-content:flex-start}
+  .issue{grid-template-columns:1fr}
+  .issue .pic img{height:auto; object-fit:contain}
+  .what{grid-template-columns:repeat(4,1fr)}
+  ol.issues{display:grid; grid-template-columns:1fr 1fr; column-gap:48px}
+  section{margin-top:80px}
+}
+@media (min-width:720px) and (max-width:959px){ .issue{grid-template-columns:minmax(0,360px) 1fr} }
+</style>
+<!--PWA_V1--><link rel="manifest" href="/manifest.json"><link rel="apple-touch-icon" href="/img/icon180.png"><link rel="icon" type="image/png" sizes="192x192" href="/img/icon192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="小週報"><meta name="theme-color" content="#FFF9EF"><!--/PWA_V1--></head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <img src="/img/logo.png" alt="菲比英文" width="700" height="168">
+    <a class="ig" href="https://www.instagram.com/phoebe.weekly/" target="_blank" rel="noopener">IG ＠phoebe.weekly</a>
+  </div>
+
+  <div class="top">
+  <header class="hero">
+    <p class="kicker">菲比小週報 · PHOEBE WEEKLY</p>
+    <h1>每週六<br>陪孩子<em>讀世界</em></h1>
+    <p class="lead">每週三則世界新聞，每則都有三種難度，中英文都有。<br>孩子讀得下去的那一種，就是對的那一種。</p>
+    <div class="cta">
+      <a class="btn" href="/2026-11-21/">讀第 10 期</a>
+      <a class="btn ghost" href="#subscribe">免費訂閱</a>
+    </div>
+    <p class="runline">已經出到第 <b id="issue-count">10</b> 期，每週六沒有斷過．不用註冊</p>
+  </header>
+
+  <section>
+    <div class="issue">
+      <div class="pic"><img src="/img/cover-2026-11-21.jpg" alt="菲比小週報第 10 期封面" width="760" height="760"></div>
+      <div class="body">
+        <span class="flag">最新一期</span>
+        <h3>第 10 期</h3>
+        <p class="date">2026 / 11 / 21（六）</p>
+        <ul class="stories">
+          <li><span class="tag">Science</span><span class="t">什麼東西離地球那麼遠，連光都要跑一整天？</span></li>
+          <li><span class="tag">World</span><span class="t">哪個國家，剛剛寫下奧運史上的第一次？</span></li>
+          <li><span class="tag">Taiwan</span><span class="t">企鵝為什麼要出門散步？</span></li>
+          <li><span class="tag">Phoebe</span><span class="t">It's time for class 的 it，到底是誰？</span></li>
+          <li><span class="tag">Phoebe</span><span class="t">Thank you for 的後面，可以接什麼？</span></li>
+        </ul>
+        <a class="btn" href="/2026-11-21/">閱讀這一期</a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <section>
+    <h2 class="sec-h">同一件事，三種寫法</h2>
+    <p class="sec-p">這是第 10 期的第一段。按一下換難度——資訊量一樣，只差在句子長度和用字。</p>
+    <div class="taste">
+      <div class="levels" role="group" aria-label="選擇難度">
+        <button type="button" data-lv="1" aria-pressed="true">簡易</button>
+        <button type="button" data-lv="2" aria-pressed="false">中等</button>
+        <button type="button" data-lv="3" aria-pressed="false">進階</button>
+      </div>
+      <p class="taste-body" id="taste-body"></p>
+      <p class="note">每一期都有這三種版本，英文版也有，還可以點朗讀。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">一期裡面有什麼</h2>
+    <div class="what">
+      <div><span class="n">1</span><b>三則世界新聞</b><span>每週三則，每則三種難度</span></div>
+      <div><span class="n">2</span><b>每週一句</b><span>生活裡真的用得到的英文問答</span></div>
+      <div><span class="n">3</span><b>單字與小測驗</b><span>從本期文章挑出來的六個字</span></div>
+      <div><span class="n">4</span><b>遊戲與小任務</b><span>一個遊戲，一個在家就能做的活動</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-h">往期</h2>
+    <ol class="issues">
+      <li><a href="/2026-11-21/"><span class="n">第 10 期</span><span class="h">什麼東西離地球那麼遠，連光都要跑一整天？</span><span class="d">11 / 21</span></a></li>
+        <li><a href="/2026-11-14/"><span class="n">第 9 期</span><span class="h">牆上刻了 280 個圖案，為什麼六十年都沒人發現？</span><span class="d">11 / 14</span></a></li>
+          <li><a href="/2026-11-07/"><span class="n">第 8 期</span><span class="h">海底 5,000 公尺，誰在發光？</span><span class="d">11 / 07</span></a></li>
+          <li><a href="/2026-10-31/"><span class="n">第 7 期</span><span class="h">名畫裡的月亮是假的？</span><span class="d">10 / 31</span></a></li>
+      <li><a href="/2026-10-24/"><span class="n">第 6 期</span><span class="h">花朵前面也會「搶位子」？科學家發現蜜蜂會把別的蟲推開</span><span class="d">10 / 24</span></a></li>
+      <li><a href="/2026-10-17/"><span class="n">第 5 期</span><span class="h">飛天車真的出現了？特斯拉新跑車在空中翻了一圈</span><span class="d">10 / 17</span></a></li>
+      <li><a href="/2026-10-10/"><span class="n">第 4 期</span><span class="h">火星的早晨長什麼樣子？好奇號拍下被風雕出來的懸崖</span><span class="d">10 / 10</span></a></li>
+      <li><a href="/2026-10-03/"><span class="n">第 3 期</span><span class="h">搭火箭去上班：飛往太空站最快的一趟</span><span class="d">10 / 03</span></a></li>
+      <li><a href="/2026-09-26/"><span class="n">第 2 期</span><span class="h">海豹幫科學家量南極的海水</span><span class="d">09 / 26</span></a></li>
+      <li><a href="/2026-09-19/"><span class="n">第 1 期</span><span class="h">猴子也看得出哪個形狀不一樣</span><span class="d">09 / 19</span></a></li>
+    </ol>
+  </section>
+
+  <section class="sub" id="subscribe">
+    <h2>每週六，新的一期寄到你的信箱</h2>
+    <p class="lead">留個 email 就好。出刊當天寄一封信給你，沒有廣告，隨時可以退訂。</p>
+    <p class="sub-count">已經有 <b id="sub-n">177</b> 位讀者訂閱</p>
+    <script>/* SUB_LIVE：打開首頁時向工作站問最新訂閱人數；問不到就保留上面的數字 */
+    (function(){try{fetch('https://phoebe-english-tutoring.vercel.app/api/weekly/subs').then(function(r){return r.ok?r.json():null}).then(function(d){var n=d&&d.count;if(typeof n==='number'&&n>0){var el=document.getElementById('sub-n');if(el)el.textContent=n;}}).catch(function(){});}catch(e){}})();</script>
+    <form class="sub-form" id="sub-form" method="POST" target="ml-frame" action="https://assets.mailerlite.com/jsonp/2689086/forms/200576955428374169/subscribe">
+      <input type="hidden" name="ml-submit" value="1">
+      <input type="hidden" name="anticsrf" value="true">
+      <label class="vis" for="sub-email">你的 Email
+        <input id="sub-email" type="email" name="fields[email]" required autocomplete="email" placeholder="name@example.com"></label>
+      <button type="submit">訂閱</button>
+    </form>
+    <iframe name="ml-frame" title="" hidden></iframe>
+    <p class="sub-ok" id="sub-ok" role="status" hidden>收到了，謝謝你！之後每週六新的一期會寄到你的信箱。沒看到信的話，找找「促銷內容」或垃圾信。</p>
+    <p class="fine">我們只會用這個信箱寄週報，不會給任何第三方。</p>
+  </section>
+
+  <section>
+    <h2 class="sec-h">轉給需要的人</h2>
+    <div class="share">
+      <p>身邊有家長也在找可以陪孩子讀的東西嗎？把網址傳給他就好，不用註冊也讀得到。</p>
+      <div class="share-row">
+        <button type="button" id="copy-link">複製網址</button>
+        <a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fphoebe-weekly.netlify.app%2F" target="_blank" rel="noopener">用 LINE 傳給朋友</a>
+        <a href="https://www.instagram.com/phoebe.weekly/" target="_blank" rel="noopener">追蹤 IG</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="/img/logo.png" alt="菲比英文" width="700" height="168">
+    <p>菲比英文 Phoebe English｜台南．五個校區</p>
+    <p>Read the world. Learn English.</p>
+    <p>有想看的主題或發現錯字，到菲比英文粉專私訊告訴我們。</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var n = document.querySelectorAll('ol.issues li').length;
+  var c = document.getElementById('issue-count');
+  if (n > 0 && c) c.textContent = n;
+
+  var T = {
+    '1': "答案是一艘 1977 年出發的太空船，名字叫航海家 1 號（Voyager 1）。它是人類做出來的東西裡，飛得最遠的一個。美國航太總署（NASA）說，2026 年 11 月 18 日，它來到了離地球「一光日」遠的地方：從地球發出去的光，要跑 24 小時才追得上它。",
+    '2': "答案是一艘 1977 年出發、至今將近 50 年的太空船：航海家 1 號（Voyager 1），它是人類製造過、距離地球最遠的物體。美國航太總署（NASA）11 月 19 日宣布，美國太平洋時間 11 月 18 日凌晨 2 點 16 分，它抵達了距離地球「一光日」的位置，也就是說，從地球發出的光要走 24 小時才到得了它那裡，距離超過 259 億公里。",
+    '3': "答案是航海家 1 號（Voyager 1）：1977 年發射、至今接近 50 年，是人類製造過距離地球最遠的物體。美國航太總署（NASA）11 月 19 日宣布，美國太平洋時間 11 月 18 日凌晨 2 點 16 分，它抵達了距地球「一光日」的位置——從地球發出的光（或無線電波）要走整整 24 小時才到得了，距離超過 259 億公里，約 161 億英里。換個方式想：太陽光到月球大約 1.3 秒、到海王星大約 4 小時，之後還要再走大約 20 小時，才追得上航海家 1 號。"
+  };
+  var body = document.getElementById('taste-body');
+  var btns = document.querySelectorAll('.levels button');
+  function show(lv){
+    if (body) body.textContent = T[lv];
+    for (var i=0;i<btns.length;i++){
+      btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-lv')===lv ? 'true':'false');
+    }
+  }
+  for (var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click', function(){ show(this.getAttribute('data-lv')); });
+  }
+  show('1');
+
+
+  var sf=document.getElementById('sub-form'), ok=document.getElementById('sub-ok');
+  if (sf && ok) sf.addEventListener('submit', function(){
+    setTimeout(function(){ sf.hidden=true; ok.hidden=false; }, 400);
+  });
+
+  var cp = document.getElementById('copy-link');
+  if (cp) cp.addEventListener('click', function(){
+    var url = 'https://phoebe-weekly.netlify.app/';
+    var done = function(){ cp.textContent = '已複製 ✓'; setTimeout(function(){ cp.textContent='複製網址'; }, 2000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, function(){});
+    } else {
+      var t=document.createElement('textarea'); t.value=url; document.body.appendChild(t);
+      t.select(); try{ document.execCommand('copy'); done(); }catch(e){}
+      document.body.removeChild(t);
+    }
+  });
+})();
+</script>
+<!--PWA_V1--><style>
+.pw-fs{position:fixed;right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;font:500 15px/1 "Noto Sans TC","PingFang TC",sans-serif;padding:10px 14px;border-radius:999px;border:1px solid rgba(27,42,58,.18);background:rgba(255,255,255,.92);color:#1B2A3A;box-shadow:0 2px 10px rgba(0,0,0,.12);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pw-fs:active{transform:scale(.96)}
+.pw-fs{transition:opacity .2s}.pw-fs.pw-hide{opacity:0;pointer-events:none}
+.pw-dlg{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(20,30,45,.45)}
+.pw-dlg>div{max-width:340px;width:100%;background:#fff;border-radius:16px;padding:20px 20px 16px;color:#1B2A3A;font:16px/1.6 "Noto Sans TC","PingFang TC",sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.pw-dlg h3{margin:0 0 8px;font-size:18px}.pw-dlg ol{margin:6px 0 10px;padding-left:1.4em}.pw-dlg p{margin:0 0 8px;font-size:14px;color:#566476}
+.pw-dlg button{display:block;width:100%;margin-top:6px;padding:11px;border:0;border-radius:10px;background:#2E7CC0;color:#fff;font:500 16px "Noto Sans TC",sans-serif}
+@media print{.pw-fs{display:none}}
+</style><script>
+(function(){try{
+var sa=matchMedia('(display-mode: fullscreen)').matches||matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+if(sa||document.fullscreenElement||document.webkitFullscreenElement)return;
+var ua=navigator.userAgent,ios=/iP(hone|od|ad)/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var inapp=/Line\/|FBAN|FBAV|Instagram/i.test(ua);
+var can=(document.fullscreenEnabled||document.webkitFullscreenEnabled)&&!inapp;
+if(!can&&!ios&&!inapp)return;
+function tip(){var d=document.createElement('div');d.className='pw-dlg';
+var steps=inapp?'<ol><li>點右上角 <b>⋯</b> 或 <b>↗</b></li><li>選「用預設瀏覽器開啟」（Safari／Chrome）</li><li>在瀏覽器裡再按一次「全螢幕」</li></ol>'
+:'<ol><li>點下方的 <b>分享</b> 按鈕（方框加向上箭頭）</li><li>往下滑，選「<b>加入主畫面</b>」</li><li>以後從主畫面的「小週報」圖示打開，就沒有網址列</li></ol>';
+d.innerHTML='<div role="dialog" aria-label="全螢幕看小週報"><h3>全螢幕看小週報</h3>'+(inapp?'<p>在 LINE、IG 裡開的網頁不能全螢幕，要先換到手機的瀏覽器。</p>':'<p>iPhone 不能直接切全螢幕，但可以把小週報放到主畫面，像 App 一樣打開。</p>')+steps+'<button type="button">知道了</button></div>';
+d.onclick=function(e){if(e.target===d||e.target.tagName==='BUTTON')d.remove()};document.body.appendChild(d);}
+var b=document.createElement('button');b.type='button';b.className='pw-fs';b.textContent='⛶ 全螢幕';
+b.onclick=function(){if(can){var el=document.documentElement,p=el.requestFullscreen?el.requestFullscreen({navigationUI:'hide'}):el.webkitRequestFullscreen&&el.webkitRequestFullscreen();
+if(p&&p.then)p.then(function(){b.remove()}).catch(tip);else b.remove();return;}tip();};
+document.body.appendChild(b);
+var sc=function(){b.classList.toggle('pw-hide',scrollY>300)};addEventListener('scroll',sc,{passive:true});sc();
+addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&!b.isConnected)document.body.appendChild(b)});
+}catch(e){}})();
+</script><!--/PWA_V1--></body>
+</html>
